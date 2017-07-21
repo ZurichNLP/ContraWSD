@@ -4,7 +4,7 @@
 #    Example script to use test sets for evaluation   #
 #######################################################
 
-path to moses decoder: https://github.com/moses-smt/mosesdecoder
+# path to moses decoder: https://github.com/moses-smt/mosesdecoder
 mosesdecoder=path-to-mosesdecoder
 truecasemodel_dir=path-to-your-truecase-models
 
