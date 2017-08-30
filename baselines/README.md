@@ -45,5 +45,5 @@ Results DE-EN
 | uedin-wmt16-parallel-single | 81.17                       | 28.5                 |
 | uedin-wmt16-single          | 83.54                       | 36.2                 |
 | uedin-wmt16-full            | 84.14                       | 38.6                 |
-| uedin-wmt17-single          | 86.72                       | 38.0                 |
+| uedin-wmt17-single          | 86.72                       | 39.6                 |
 | uedin-wmt17-full            | 87.91                       | 41.0                 |
