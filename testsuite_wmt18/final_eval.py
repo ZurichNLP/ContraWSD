@@ -89,7 +89,7 @@ def finalize(automatic_eval, manual_eval, verbose=False, ignore_wmt=False):
         correct = sentence_pair['correct']
         frequency = sentence_pair['frequency']
         category = sentence_pair['category']
-        occurrence = sentence_pair['occurence in source']
+        occurrence = sentence_pair['occurrence in source']
         manual_occurrence += occurrence
         
             
@@ -101,7 +101,7 @@ def finalize(automatic_eval, manual_eval, verbose=False, ignore_wmt=False):
             # already included in total, only need to be added to correct
             # make sure that correct <= occurence in reference (we do not want to adapt total number of cases!)
             if int(correct) > occurrence:
-                print("number of correct words {} is higher than number of occurence in source {} in example with source {}".format(correct, sentence_pair['occurence in source'],  sentence_pair['source']))
+                print("number of correct words {} is higher than number of occurrence in source {} in example with source {}".format(correct, sentence_pair['occurrence in source'],  sentence_pair['source']))
                 exit(1)
             else:
                if correct == "0":

@@ -170,9 +170,9 @@ def count_errors(reference, translations, verbose=False, ignore_wmt=False,  year
             continue;
 
         sntnbr = sentence['sentence number']
-        ## take number of occurence in source as value here instead of just counting sentences 
-        occurence = sentence['occurence in source']  
-        results['by_category'][category]['total'] += occurence
+        ## take number of occurrence in source as value here instead of just counting sentences 
+        occurrence = sentence['occurrence in source']  
+        results['by_category'][category]['total'] += occurrence
         
         frequencyratio = sentence.get('frequency of sense/ambig word in wmt18', None) ## de-en
         if(year == 17):
@@ -191,7 +191,7 @@ def count_errors(reference, translations, verbose=False, ignore_wmt=False,  year
         elif frequency is not None:
              frequency = DEFAULT_FREQUENCY
         if frequency is not None:
-           results['by_frequency'][frequency]['total'] += occurence
+           results['by_frequency'][frequency]['total'] += occurrence
            results['category_by_freq'][category] = frequency;
 
 	
@@ -216,7 +216,7 @@ def count_errors(reference, translations, verbose=False, ignore_wmt=False,  year
         matches2 = p2.findall(translation)
         
         if (len(matches)>0 and len(matches2)>0):
-            foundBoth += occurence
+            foundBoth += occurrence
             FOUND_both_senses=True
             json_ex = OrderedDict ([
                         ('category' , category),
@@ -228,7 +228,7 @@ def count_errors(reference, translations, verbose=False, ignore_wmt=False,  year
                         ('looking for sense', sensepattern),
                         ('looking for other senses' , otherpattern),
                         ('found both' , True),
-                        ('occurence in source' , occurence),
+                        ('occurrence in source' , occurrence),
                         ('found list 1', matches),
                         ('found list 2' , matches2),
                         ('correct' , " ") ])
@@ -243,12 +243,12 @@ def count_errors(reference, translations, verbose=False, ignore_wmt=False,  year
         
         elif len(matches)>0:
             FOUND_only_correct = True
-            if occurence >= len(matches):
+            if occurrence >= len(matches):
                 FOUND_only_correct_nbr_in_trans = len(matches)
         elif len(matches2)>0:
             FOUND_only_other = True    
         else:
-            unfound += occurence
+            unfound += occurrence
             UNFOUND=True
             json_ex = OrderedDict ([
                         ('category' , category),
@@ -260,7 +260,7 @@ def count_errors(reference, translations, verbose=False, ignore_wmt=False,  year
                         ('looking for sense', sensepattern),
                         ('looking for other senses' , otherpattern),
                         ('found none' , True),
-                        ('occurence in source' , occurence),
+                        ('occurrence in source' , occurrence),
                         ('correct' , " ") ])
             manual_evaluation_required.append(json_ex)
             if verbose:
@@ -275,26 +275,26 @@ def count_errors(reference, translations, verbose=False, ignore_wmt=False,  year
         
         if FOUND_only_correct:
             results['by_category'][category]['only_correct'] += FOUND_only_correct_nbr_in_trans
-            results['by_category'][category]['unfound_in_correct'] += (occurence-FOUND_only_correct_nbr_in_trans)
-            unfound += occurence-FOUND_only_correct_nbr_in_trans
+            results['by_category'][category]['unfound_in_correct'] += (occurrence-FOUND_only_correct_nbr_in_trans)
+            unfound += occurrence-FOUND_only_correct_nbr_in_trans
             if frequency is not None:
                 results['by_frequency'][frequency]['only_correct'] += FOUND_only_correct_nbr_in_trans
-                results['by_frequency'][frequency]['unfound_in_correct'] +=  (occurence-FOUND_only_correct_nbr_in_trans)
+                results['by_frequency'][frequency]['unfound_in_correct'] +=  (occurrence-FOUND_only_correct_nbr_in_trans)
                 
         elif FOUND_both_senses:        
-            results['by_category'][category]['found_both'] += occurence
+            results['by_category'][category]['found_both'] += occurrence
             if frequency is not None:
-                results['by_frequency'][frequency]['found_both'] += occurence
+                results['by_frequency'][frequency]['found_both'] += occurrence
                 
         elif FOUND_only_other:
-            results['by_category'][category]['only_other'] += occurence
+            results['by_category'][category]['only_other'] += occurrence
             if frequency is not None:
-                results['by_frequency'][frequency]['only_other'] += occurence
+                results['by_frequency'][frequency]['only_other'] += occurrence
                 
         elif UNFOUND:
-            results['by_category'][category]['unfound'] += occurence
+            results['by_category'][category]['unfound'] += occurrence
             if frequency is not None:
-                results['by_frequency'][frequency]['unfound'] += occurence        
+                results['by_frequency'][frequency]['unfound'] += occurrence        
             
     print('nothing found in {0} cases'.format(unfound))
     print('both senses found in {0} cases'.format(foundBoth))
