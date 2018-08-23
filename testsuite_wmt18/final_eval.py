@@ -113,8 +113,14 @@ def finalize(automatic_eval, manual_eval, verbose=False, ignore_wmt=False):
                     results['by_category'][category]['correct'] += int(correct)
                     if 'found none' in sentence_pair:
                         manual_found_none += diff
-                    elif 'found both' in sentence_pair:
-                        manual_only_other += diff
+                    elif 'found both' in sentence_pair: # if there were >2 ambiguous words in source, some might have been translated wrong and others might not be translated at all
+                        if 'unfound' in sentence_pair:
+                            #print("nbr unfound: {}".format(sentence_pair['unfound']))
+                            manual_found_none += int(sentence_pair['unfound'])
+                            manual_only_other += diff - int(sentence_pair['unfound'])
+                    
+                        else:
+                            manual_only_other += diff
                     
                
     total_unfound = manual_found_none + automatic_unfound_in_correct
