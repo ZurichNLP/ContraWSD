@@ -15,6 +15,6 @@ It will print the results to STDOUT and to a given location (`--outname-automati
 - correct: ">1" -- number of correct translations, can be >1 if source contained more than one instance of the ambiguous words. Note that this value cannot be greater than the value of `occurrence in source` of the sentence pair.
 - correct: "0"  -- ambiguous word is translated with one of its other meanings
 - correct: " "  -- ambiguous word has not been translated (whitespace in quotes)
-- in the (rare) case of "occurrence in source" > 2 and correct is smaller than this number, the script will per default assume that the difference of "occurrence in source" - "correct" is wrong (to be treated as "0"), if one or more are not translated, add "unfound": number of untranslated instances
+- in the (rare) case that the script finds both translations and "occurrence in source" > 2 and correct is smaller than this number, the script will per default assume that the difference of "occurrence in source" - "correct" is wrong (to be treated as "0"), if one or more are not translated, add "unfound": number of untranslated instances
 
 `evaluate_example.sh` contains a usage example for the scripts.
