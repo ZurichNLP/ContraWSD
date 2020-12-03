@@ -28,4 +28,4 @@ score.sh is an example of how to use the scripts in this repository with the tes
 
 If you use this test set, please cite:
 
-Annette Rios, Laura Mascarell and Rico Sennrich. 2017. Improving Word Sense Disambiguation in Neural Machine Translation with Sense Embeddings. In _Proceedings of the Second Conference on Machine Translation (WMT17)_, Copenhagen, Denmark (to appear).
+Annette Rios, Laura Mascarell and Rico Sennrich. 2017. [Improving Word Sense Disambiguation in Neural Machine Translation with Sense Embeddings](https://www.aclweb.org/anthology/W17-4702/). In _Proceedings of the Second Conference on Machine Translation (WMT17)_, Copenhagen, Denmark.
